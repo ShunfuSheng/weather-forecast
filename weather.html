@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气查询</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/animate.css">
+    <script src="lib/bootstrap/js/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery-fullscreen-plugin/1.1.4/jquery.fullscreen-min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form action="#" method="get" id="myForm" class="form-inline" role="form" style="margin: 10px">
+            <div class="form-group">
+                <input type="text" class="form-control" id="search" placeholder="请输出城市名">
+            </div>
+            <button type="submit" class="btn btn-danger">查询</button>
+            <button id="hide" class="btn btn-success">全屏</button>
+        </form>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr class="info">
+                <th>日期</th>
+                <th>星期</th>
+                <th>风向</th>
+                <th>风力</th>
+                <th>最高温</th>
+                <th>最低温</th>
+                <th>天气状况</th>
+            </tr>
+            </thead>
+            <!--天气数据表格的渲染-->
+            <tbody id="write">
+                <tr v-for="item in weather_data" class="success">
+                    <td>{{item.date}}</td>
+                    <td>{{item.week}}</td>
+                    <td>{{item.fengxiang}}</td>
+                    <td>{{item.fengli}}</td>
+                    <td>{{item.hightemp}}</td>
+                    <td>{{item.lowtemp}}</td>
+                    <td>{{item.type}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--highcharts图表-->
+        <div id="contain"></div>
+    </div>
+
+    <script src="lib/Highcharts-5.0.2/code/highcharts.js"></script>
+    <script src="lib/Highcharts-5.0.2/code/js/themes/dark-green.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="js/weather.js"></script>
+</body>
+</html>
+
+<script>
+    $('#hide').click(function () {
+        $(document).toggleFullScreen();
+    })
+</script>
